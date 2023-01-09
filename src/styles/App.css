@@ -121,40 +121,51 @@ li:has(.link-active) {
 /***Home page styling*************/
 /*********************************/
 
-#mainHome {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: calc(100vh - var(--header-height) - var(--footer-height));
+#mainHome, #errpage {
   color: var(--main-text-color);
   background-color: var(--main-bg-color);
+  display:flex;
+  flex-direction: column;
+  height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 
-#contentHome {
+#content {
+  flex:1;
   display: flex;
   flex-direction: column;
+  overflow: scroll;
+  align-items: center;
+  /* padding: 20px; */
 }
 
-#contentHome > div:first-child {
+#content > div:first-child {
   background-color: var(--form-bg-color);
   display:flex;
+  align-self: stretch;
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
+  position: sticky;
+  top: 0;
 }
 
 #landingPage {
   display: flex;
   flex-direction: column;
+  margin: auto;
   justify-content: center;
   align-items: center;
+  max-width: 550px;
+  padding: 16px;
   gap: 16px;
-  background-color: var();
-  height: calc(100vh - var(--header-height) - var(--footer-height));
+  background-color: var(--hdft-text-color);
+  box-shadow: 4px 4px 6px var(--form-text-color);
+  border-radius: 8px;
 }
 
 #copy {
-  width: 50%;
-  text-align: justify;
+  width: clamp(300px, 100%, 500px);
+  text-align: justify;  
 }
 
 #copy > p:last-child{
@@ -163,19 +174,19 @@ li:has(.link-active) {
 }
 
 #landingPage button {
-  padding: 20px 40px;
+  padding: 16px 32px;
   font-size: 1.5rem;
   font-weight: 700;
   border-radius: 8px;
 }
 
-#landingPage > image {
+#landingPage .image {
   display: flex;
   justify-content: center;
   align-items: stretch;
   background-color: var(--form-bg-color);
-  width: 250px;
-  height: 200px;
+  outline: 2px solid var(--form-text-color);
+  max-height: clamp(100px, 100%, 200px);
   padding: 16px;
   border-radius: 8px;
 }

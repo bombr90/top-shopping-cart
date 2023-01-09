@@ -1,29 +1,47 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import uniqid from "uniqid";
 import products from './../../data/data'
 import Cart from './Cart';
 import Catalogue from "./Catalogue";
-import {shuffle} from './../util'
-
-// Create local copy of JSON data for store maintained while on the shopping page
-  
-const productsList = (() => {
-  const productsCopy = products.map((product) => {
-    product.uid = uniqid();
-    return product;
-  });
-  return shuffle(productsCopy)
-})();
+import { randomSelection } from './../util'
 
 const Main = () => {
-  const [shoppingCart, setShoppingCart] = useState([]);
+  //////////////////////////////////////
+  ///Cart and catalogue state setup/////
+  //////////////////////////////////////
+
+  // localStorage.clear()
+  const [shoppingCart, setShoppingCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) || []
+  );
 
   const [cartState, setCartState] = useState({
     display: false,
   });
 
-  const [shoppingCatalogue, setShoppingCatalogue] = useState({
-    products: productsList,
+  const [shoppingCatalogue, setShoppingCatalogue] = useState(
+    JSON.parse(
+      localStorage.getItem("catalogue")) || { products: createProductsList() }
+  );
+
+  // On mount, check for empty cart. Generate a fresh sample catalogue if it is
+  useEffect(() => {
+    if (shoppingCart.length === 0) {
+      setShoppingCatalogue({ products: createProductsList() });
+    }
+  }, []);
+
+  // Sync 'cart' localstorage with component shoppingCart
+  useEffect(
+    () => localStorage.setItem("cart", JSON.stringify(shoppingCart)),
+    [shoppingCart]
+  );
+
+  // On unmount, Save current catalogue (to maintain uniqid's)
+  useEffect(() => {
+    return () => {
+      localStorage.setItem("catalogue", JSON.stringify(shoppingCatalogue));
+    };
   });
 
   //////////////////////////////////////
@@ -38,7 +56,7 @@ const Main = () => {
   };
 
   const handleCheckCart = () => {
-    alert("Checkout functionality not coded.")
+    alert("Checkout functionality not coded.");
   };
 
   const handleCloseCart = () => setCartState({ display: false });
@@ -122,7 +140,20 @@ const Main = () => {
   const eventsCatalogue = {
     addItem: handleItemClick,
     openCart: handleOpenCart,
-   };
+  };
+
+  //////////////////////////////////////
+  ///Helper function////////////////////
+  //////////////////////////////////////
+
+  // Create random sample of the JSON data
+  function createProductsList() {
+    const productsCopy = randomSelection(products, 10).map((product) => {
+      product.uid = uniqid();
+      return product;
+    });
+    return productsCopy;
+  }
 
   //////////////////////////////////////
   ///Return (render) ///////////////////
@@ -136,11 +167,7 @@ const Main = () => {
         state={cartState}
         count={cartCount()}
       />
-      <Cart 
-      itemList={shoppingCart} 
-      events={eventsCart}
-      state={cartState}
-      />
+      <Cart itemList={shoppingCart} events={eventsCart} state={cartState} />
     </div>
   );
 }
