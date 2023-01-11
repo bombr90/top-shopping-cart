@@ -71,7 +71,7 @@ const Main = () => {
     const uid = event.target.parentElement.parentElement.id;
     setShoppingCart((prev) => {
       return prev.map((el) =>
-        el.uid === uid ? { ...el, quantity: Math.min(el.quantity++, 99) } : el
+        el.uid === uid ? { ...el, quantity: Math.min(el.quantity + 1, 99) } : el
       );
     });
   };
@@ -80,7 +80,7 @@ const Main = () => {
     const uid = event.target.parentElement.parentElement.id;
     setShoppingCart((prev) => {
       return prev.map((el) =>
-        el.uid === uid ? { ...el, quantity: Math.max(el.quantity--, 1) } : el
+        el.uid === uid ? { ...el, quantity: Math.max(el.quantity - 1, 1) } : el
       );
     });
   };
@@ -99,13 +99,16 @@ const Main = () => {
   };
 
   const addProductToCart = (uid, data) => {
+    console.log('adding product...')
     setShoppingCart((prev) => {
       const index = prev.findIndex((el) => el.uid === uid);
       if (index >= 0) {
+        console.log('adding 1')
         return prev.map((el) =>
-          el.uid === uid ? { ...el, quantity: Math.min(el.quantity++, 99) } : el
+          el.uid === uid ? { ...el, quantity: Math.min(el.quantity + 1, 99) } : el
         );
       } else {
+        console.log('newproduct')
         data.quantity = 1;
         return [...prev, data];
       }
