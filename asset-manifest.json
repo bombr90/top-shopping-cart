@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/top-shopping-cart/static/css/main.858f0503.css",
+    "main.js": "/top-shopping-cart/static/js/main.066e4506.js",
+    "static/media/us.webp": "/top-shopping-cart/static/media/us.0c3f549fba59efe6da7f.webp",
+    "static/media/gb.webp": "/top-shopping-cart/static/media/gb.b4128a8d3f5618a535ee.webp",
+    "static/media/au.webp": "/top-shopping-cart/static/media/au.c2ff4c98bcab829f847d.webp",
+    "static/media/kr.webp": "/top-shopping-cart/static/media/kr.6925ba0b976480e86621.webp",
+    "static/media/ph.webp": "/top-shopping-cart/static/media/ph.93226dc03efb13c96292.webp",
+    "static/media/th.webp": "/top-shopping-cart/static/media/th.ea2c484a7e6c8ef722ab.webp",
+    "static/media/hk.webp": "/top-shopping-cart/static/media/hk.e2ffe8e7594f69c65994.webp",
+    "static/media/ru.webp": "/top-shopping-cart/static/media/ru.6eb04c2ad59eb951be96.webp",
+    "static/media/vn.webp": "/top-shopping-cart/static/media/vn.212dcbd5e194b7fc8e82.webp",
+    "static/media/cn.webp": "/top-shopping-cart/static/media/cn.da8e85f4c3f9e49900f8.webp",
+    "static/media/tw.webp": "/top-shopping-cart/static/media/tw.7c09c06a93de53c0ffaa.webp",
+    "static/media/fr.webp": "/top-shopping-cart/static/media/fr.452b6f35a6e5484f533e.webp",
+    "static/media/ca.webp": "/top-shopping-cart/static/media/ca.5488d52a613003515144.webp",
+    "static/media/jp.webp": "/top-shopping-cart/static/media/jp.2570ce023a759bfb0899.webp",
+    "static/media/de.webp": "/top-shopping-cart/static/media/de.98f329970ee5f8e7ba9c.webp",
+    "index.html": "/top-shopping-cart/index.html",
+    "main.858f0503.css.map": "/top-shopping-cart/static/css/main.858f0503.css.map",
+    "main.066e4506.js.map": "/top-shopping-cart/static/js/main.066e4506.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.858f0503.css",
+    "static/js/main.066e4506.js"
+  ]
+}
