@@ -1,5 +1,4 @@
 import Item from './Item'
-import React from 'react';
 
 const Catalogue = ({products, events, state, count}) => {
 
